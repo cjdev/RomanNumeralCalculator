@@ -9,13 +9,13 @@ _Yeah, we could post to Indeed or Monster and then put you through an awkward ph
 Sound good?_
 
 ---------------------
-Submit a pull request to [project url] by [deadline].
+Submit a pull request to this project by Sunday, April 2nd @ 12pm.
 The person with the most tests passing from our test suite gets to take home a Raspberry Pi 3, complete with 802.11n Wireless LAN, Bluetooth 4.1, 1GB of RAM, and HDMI & Ethernet ports.
 Any ties will be broken by code review, based on readability and correctness.
 
 Here’s your challenge:
 
-This github repo [project url] contains a set of partially implemented functions constituting a Roman numeral calculator. These include addition, subtraction, multiplication, and division.
+This github repo contains a set of partially implemented functions constituting a Roman numeral calculator. These include addition, subtraction, multiplication, and division.
 
 Using the test suite as your guide, fully implement each function.
 
@@ -49,4 +49,6 @@ Pro tips:
 
 - If you have any questions, please stop by the CJ Engineering booth to speak with a CJ engineer.
 
-- This site may be helpful: http://www.onlineconversion.com/roman_numerals_advanced.htm
+- These sites may be helpful:
+    - http://www.onlineconversion.com/roman_numerals_advanced.htm
+    - http://www.factmonster.com/ipka/A0769547.html

@@ -13,6 +13,8 @@ Submit a pull request to this project by Sunday, April 2nd @ 12pm.
 The person with the most tests passing from our test suite gets to take home a Raspberry Pi 3, complete with 802.11n Wireless LAN, Bluetooth 4.1, 1GB of RAM, and HDMI & Ethernet ports.
 Any ties will be broken by code review, based on readability and correctness.
 
+Be sure to include your contact information in _ContactInfo.txt_
+
 Here’s your challenge:
 
 This github repo contains a set of partially implemented functions constituting a Roman numeral calculator. These include addition, subtraction, multiplication, and division.

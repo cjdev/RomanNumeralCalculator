@@ -1,0 +1,11 @@
+Please add your contact information below before submitting your pull request so that we may contact you if you win!
+
+Name:
+Email:
+Phone Number:
+
+---------
+
+(Optional)
+Date of Graduation:
+Major:

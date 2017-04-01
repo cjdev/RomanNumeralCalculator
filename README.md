@@ -9,7 +9,7 @@ _Yeah, we could post to Indeed or Monster and then put you through an awkward ph
 Sound good?_
 
 ---------------------
-Submit a pull request to this project by Saturday, April 1st @ 11:59pm.
+Submit a pull request to this project by Sunday, April 2nd @ 1am. Winner will be announced/contacted on Sunday April 2nd by 10am.
 The person with the most tests passing from our test suite gets to take home a Raspberry Pi 3, complete with 802.11n Wireless LAN, Bluetooth 4.1, 1GB of RAM, and HDMI & Ethernet ports.
 Any ties will be broken by code review, based on readability and correctness.
 

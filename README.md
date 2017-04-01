@@ -42,7 +42,7 @@ Pseudocode:
 
 You must also support negative numbers and fractional values. Admittedly, the concept of non-positive integers and fractions don’t exist in traditional Roman numerals, so we’re going to represent them as lowercase numerals (see below for examples). Fractions should be simplified and rounded to the hundredths place.
 
-`2.543 => 2 54/100 => 2 27/100 => II xxvii/l`
+`2.543 => 2 54/100 => 2 27/50 => II xxvii/l`
 
 Pro tips:
 - Don’t try to write the perfect solution right away. Build your program piece-by-piece and focus on getting one test to pass at a time. At CJ, we value Test Driven Development (TDD) because it helps us break down complex problems into smaller, solvable chunks.

@@ -21,7 +21,7 @@ public class RomanNumeralCalculatorTest {
     @Test
     public void add2() {
         //given
-        String[] romanNumerals = new String[]{"II, III", "I"};
+        String[] romanNumerals = new String[]{"II", "III", "I"};
 
         //when
         String actual = addRomanNumerals(romanNumerals);

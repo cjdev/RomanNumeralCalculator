@@ -264,7 +264,7 @@ public class RomanNumeralCalculatorTest {
 
         //when
         String actual = divideRomanNumerals("I", romanNumerals);
-        String expected = "viii/x";
+        String expected = "ii/xxv";
 
         //then
         assertEquals(expected, actual);

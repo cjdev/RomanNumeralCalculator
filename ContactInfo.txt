@@ -1,8 +1,8 @@
 Please add your contact information below before submitting your pull request so that we may contact you if you win!
 
-Name:
-Email:
-Phone Number:
+Name: Emily Nguyen
+Email: eonguyen@uci.edu	
+Phone Number: (510) 557-8415
 
 ---------
 

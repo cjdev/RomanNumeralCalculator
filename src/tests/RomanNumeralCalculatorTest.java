@@ -6,6 +6,125 @@ import static org.junit.Assert.*;
 public class RomanNumeralCalculatorTest {
 
     @Test
+    public void toNumber1() {
+        //given
+        String romanNumber = "MMMMCMXCIX";
+
+        //when
+        double expected = 4999;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+    @Test
+    public void toNumber2() {
+        //given
+        String romanNumber = "-MMMMCMXCIX";
+
+        //when
+        double expected = -4999;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+    @Test
+    public void toNumber3() {
+        //given
+        String romanNumber = "nulla";
+
+        //when
+        double expected = 0;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+
+    }
+
+    @Test
+    public void toNumber4() {
+        //given
+        String romanNumber = "i/iv";
+
+        //when
+        double expected = 0.25;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+    @Test
+    public void toNumber5() {
+        //given
+        String romanNumber = "X i/iv";
+
+        //when
+        double expected = 10.25;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+    @Test
+    public void toNumber6() {
+        //given
+        String romanNumber = "-X i/iv";
+
+        //when
+        double expected = -10.25;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+
+    @Test
+    public void toRoman1() {
+        //given
+        double number = 0.2;
+
+        //when
+        String actual = toRoman(number);
+        String expected = "i/v";
+
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void toNumber7() {
+        //given
+        String romanNumber = "III i/v";
+
+        //when
+        double expected = 3.2;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+    @Test
+    public void toNumber8() {
+        //given
+        String romanNumber = "III ii/v";
+
+        //when
+        double expected = 3.4;
+        boolean eq = Double.valueOf(expected).equals(toNumber(romanNumber));
+
+        //then
+        assertTrue(eq);
+    }
+
+    @Test
     public void add1() {
         //given
         String[] romanNumerals = new String[]{"I", "II"};
@@ -264,7 +383,7 @@ public class RomanNumeralCalculatorTest {
 
         //when
         String actual = divideRomanNumerals("I", romanNumerals);
-        String expected = "viii/x";
+        String expected = "ii/xxv";
 
         //then
         assertEquals(expected, actual);

@@ -1,11 +1,22 @@
 Please add your contact information below before submitting your pull request so that we may contact you if you win!
 
-Name:
-Email:
-Phone Number:
+Name: Zhizhen (Eli) Qin
+Email: EliQinZZ1997@gmail.com
+Phone Number: 8585395686
+Date of Graduation: June, 2019
+Major: Computer Engineering
+Link to resume: goo.gl/I1wGH4
 
----------
+Name: Litao Qiao
+Email: l1qiao@ucsd.edu
+Phone Number: 8586667782
+Date of Graduation: June, 2019
+Major: Computer Engineering
 
-(Optional)
-Date of Graduation:
-Major:
+Name: Zhuojun Chen
+Email: zhc111@ucsd.edu
+Phone Number: 8585313196
+Date of Graduation: June, 2019
+Major: Computer Science 
+
+Thank you very much for giving us the oppotunity!

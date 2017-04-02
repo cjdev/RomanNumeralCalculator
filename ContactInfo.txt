@@ -1,11 +1,12 @@
 Please add your contact information below before submitting your pull request so that we may contact you if you win!
 
-Name:
-Email:
-Phone Number:
+Name: Hamdi Allam   
+Email: hamdi.allam97@gmail.com  
+Phone Number: 408-836-8508
 
 ---------
 
 (Optional)
-Date of Graduation:
-Major:
+Date of Graduation: 2019
+Major: Computer Science
+

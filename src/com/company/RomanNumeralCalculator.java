@@ -1,18 +1,15 @@
 package com.company;
 
-import com.intellij.icons.AllIcons;
-
 import java.math.BigDecimal;
-
+//BigDecimal is used to ensure precision while using Doubles/doubles
 public class RomanNumeralCalculator {
 
     public static void main(String[] args) {
-        String x = "VII";
-        String[] arr = {"II","III","I"};
-        String result = addRomanNumerals(arr);
+        //not used
     }
 
     public static String addRomanNumerals(String... args){
+        //adds RomanNumerals
         Double value = 0.0;
         int arrlen = args.length;
         for(int i = 0; i < arrlen; i++) {
@@ -22,6 +19,7 @@ public class RomanNumeralCalculator {
     }
 
     public static String subtractRomanNumerals(String initial, String... rest){
+        //subtracts RomanNumerals
         Double value = 0.0;
         int arrlen = rest.length;
         for(int i = 0; i < arrlen; i++) {
@@ -29,13 +27,14 @@ public class RomanNumeralCalculator {
         }
         Double init = parser(initial);
         BigDecimal init_temp = BigDecimal.valueOf(init);
-        BigDecimal  val_temp = BigDecimal.valueOf(value);
+        BigDecimal val_temp = BigDecimal.valueOf(value);
         BigDecimal result = init_temp.subtract(val_temp);
         double temp = result.doubleValue();
         return convertToRoman(temp);
     }
 
     public static String multiplyRomanNumerals(String... args){
+        //Multiplies RomanNumerals
         Double value = 1.0;
         int arrlen = args.length;
         for(int i = 0; i < arrlen; i++) {
@@ -45,10 +44,12 @@ public class RomanNumeralCalculator {
     }
 
     public static String divideRomanNumerals(String numerator , String... denominators){
+        //divides RomanNumerals
         Double result = parser(numerator);
         for(int i = denominators.length - 1; i >= 0; i--)
         {   if(denominators[i] == "nulla")
-                throw new IllegalArgumentException("divide by zero error");
+            //throws exception when dividing by zero;
+            throw new IllegalArgumentException("divide by zero error");
             Double divisor = parser(denominators[i]);
             result = result /divisor;
         }
@@ -56,6 +57,7 @@ public class RomanNumeralCalculator {
     }
 
     public static int convertToWhole(String arg) {
+        //converts the whole numbers to roman numerals
         int value = 0;
         int counter = 0;
         char last = 'z';
@@ -95,6 +97,7 @@ public class RomanNumeralCalculator {
     }
     public static String convertToRoman(Double arg)
     {
+        //converts number into RomanNumerals
         Double val = arg;
         if(arg == 0.0)
             return "nulla";
@@ -103,8 +106,12 @@ public class RomanNumeralCalculator {
             val = -val;
             negative = true;
         }
+
+        //stringbuilder is more memory and time efficient than appending to a string
         StringBuilder sb = new StringBuilder();
         String temp = "";
+
+        //creates the roman numerals
         while(val >= 1000)
         {
             val -= 1000;
@@ -166,6 +173,7 @@ public class RomanNumeralCalculator {
         }
         String temp1 = sb.toString();
 
+        //deals with remaining decimals
         if(val != 0.0)
         {
             if(temp1.length() == 0)
@@ -181,9 +189,13 @@ public class RomanNumeralCalculator {
     }
     public static String decToFrac(Double arg)
     {
+        //converts decimals into fractions
+        //Times by 100 in order to cut off at hundrendths
+        //adds 0.5 in order to round up.
         Double temp = arg * 100 +0.5;
         int temp2 = temp.intValue();
 
+        //gcd is used to reduce fractions
         int temp_gcd;
         temp_gcd = gcd(temp2,100);
         String num = convertToRoman((temp2/temp_gcd)+ 0.0);
@@ -192,6 +204,7 @@ public class RomanNumeralCalculator {
     }
     public static int gcd(int num,int deno)
     {
+        //finds greatest common denominator
         if(deno == 0)
             return num;
         else
@@ -200,20 +213,26 @@ public class RomanNumeralCalculator {
 
     public static Double parser(String arg)
     {
+        //splits strings into whole numbers and fractions
         String[] arr = arg.split(" ");
         int arrlen = arr.length;
         Double value = 0.0;
+
+        //used to keep track of negatives
         boolean negative = false;
+
         if(arr[0].charAt(0) == '-')
             negative = true;
         for(int i = 0; i < arrlen; i++) {
             if (arr[i].contains("/")) {
+                //used to detect the fraction into two different roman numerals for easier use
                 value += convertToDecimal(arr[i]);
             }
             else
                 value += convertToWhole(arr[i]);
         }
         if (negative) {
+            //makes the values negative
             value = -value;
             return value;
         }
@@ -221,11 +240,19 @@ public class RomanNumeralCalculator {
     }
     public static Double convertToDecimal(String arg)
     {
+        //converts fraction into the decimal portion of a double
+
+        //used to split the fraction into two different roman numerals for easier use
         String[] arr = arg.split("/");
+
+        //used to manipulate the input into being able to be used with existing functions
         String num = arr[0].toUpperCase();
         String deno = arr[1].toUpperCase();
+
+        //creates doubles
         Double numerator = convertToWhole(num) + 0.0;
         Double denominator = convertToWhole(deno) + 0.0;
+
         return numerator/denominator;
     }
 

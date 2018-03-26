@@ -51,8 +51,9 @@ public class RomanNumeralCalculator {
 	 * with decimals, "nulla" if 0
 	 */
 	public static String decimalToRoman(double number) {		
-		if (number == 0)
+		if (number == 0) {
 			return "nulla";
+		}
 
 		// rounds the decimal to the nearest hundredth
 		double rounded = Math.round(number * 100.0)/100.0;		
@@ -109,8 +110,7 @@ public class RomanNumeralCalculator {
 		num = num.toUpperCase();
 	    int intNum = 0;
 	    int prev = 0;
-	    for (int i = num.length()-1; i>=0 ; i--)
-	    {
+	    for (int i = num.length()-1; i>=0 ; i--) {
 	    	//check if the first character is a '-', negative
     		if (Character.toString(num.charAt(i)).matches("-")) {
     			return -intNum;
@@ -121,8 +121,7 @@ public class RomanNumeralCalculator {
                 intNum -= temp;
             } else {
                 intNum += temp;
-			}
-			
+			}	
             prev = temp;
 	    }
 	    return intNum;
@@ -142,7 +141,7 @@ public class RomanNumeralCalculator {
 		if (parts.length > 1) {
 			numer = romanToInt(parts[parts.length-2]);
 			denom = romanToInt(parts[parts.length-1]);
-			if (parts.length == 2){
+			if (parts.length == 2) {
 				result = 0;
 			}
 		}
@@ -155,7 +154,7 @@ public class RomanNumeralCalculator {
 		return result + fraction;
 	}
     
-    public static String addRomanNumerals(String... args){
+    public static String addRomanNumerals(String... args) {
     	double result = 0;
     	for (int i = 0; i < args.length; ++i) {
     		double r = romanFracToDeci(args[i]);
@@ -164,7 +163,7 @@ public class RomanNumeralCalculator {
     	return decimalToRoman(result);
     }
 
-    public static String subtractRomanNumerals(String initial, String... rest){
+    public static String subtractRomanNumerals(String initial, String... rest) {
     	double result = romanFracToDeci(initial);
     	for (int i = 0; i < rest.length; ++i) {
     		double r = romanFracToDeci(rest[i]);
@@ -173,7 +172,7 @@ public class RomanNumeralCalculator {
     	return decimalToRoman(result);    
     }
 
-    public static String multiplyRomanNumerals(String... args){
+    public static String multiplyRomanNumerals(String... args) {
     	double result = 0;
     	if (args.length > 0) {
 	    	result = 1;
@@ -185,7 +184,7 @@ public class RomanNumeralCalculator {
 	    return decimalToRoman(result);
     }
 
-    public static String divideRomanNumerals(String numerator , String... denominators){
+    public static String divideRomanNumerals(String numerator , String... denominators) {
     	double result = romanFracToDeci(numerator);
     	for (int i = 0; i < denominators.length; ++i) {
     		double r = romanFracToDeci(denominators[i]);

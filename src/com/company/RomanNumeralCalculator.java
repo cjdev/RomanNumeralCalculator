@@ -3,18 +3,21 @@ import java.util.*;
 
 public class RomanNumeralCalculator {
  
-	public static String InttoRoman(int number, boolean lower) {
-		// takes a whole integer and turns it into Roman Numerals
-		
+	/**
+	 * Takes a whole integer and turns it into Roman Numerals
+	 */
+	public static String intToRoman(int number, boolean lower) {
 		int num = number;
 		String result = "";
+
 		// if the number is negative, make sure the Roman is too
 		if (number < 0) {
 			result += "-";
 			num -= 2*number;
 		}
+
 		// make num I's and replace them until simplified
-	    result += String.join("", Collections.nCopies(num, "I"))
+		result += String.join("", Collections.nCopies(num, "I"))
 	            .replace("IIIII", "V")
 	            .replace("IIII", "IV")
 	            .replace("VV", "X")
@@ -27,21 +30,27 @@ public class RomanNumeralCalculator {
 	            .replace("CCCC", "CD")
 	            .replace("DD", "M")
 	            .replace("DCD", "CM");
-	    // if dealing with fractions, make lowercase
-	    if (lower)
-	    	return result.toLowerCase();
-	    return result;
+
+		// if dealing with fractions, make lowercase
+		if (lower) {
+			return result.toLowerCase();
+		}
+		
+		return result;
 	}
 	
+	/**
+	 * Calculates GCM
+	 */
 	public static int gcm(int a, int b) {
-		// calculates gcm
-		 return b == 0 ? a : gcm(b, a % b);
+		return b == 0 ? a : gcm(b, a % b);
 	}
 	
-	public static String DecimaltoRoman(double number) {
-		// takes a decimal number and turns it into Roman Numerals
-		// with decimals, "nulla" if 0
-			
+	/**
+	 * Takes a decimal number and turns it into Roman Numerals
+	 * with decimals, "nulla" if 0
+	 */
+	public static String decimalToRoman(double number) {		
 		if (number == 0)
 			return "nulla";
 
@@ -51,7 +60,7 @@ public class RomanNumeralCalculator {
 		// separate the whole integer and the decimal
 		String num = Double.toString(rounded);
 		String result = num.substring(0, num.indexOf("."));
-		result = InttoRoman(Integer.parseInt(result), false);
+		result = intToRoman(Integer.parseInt(result), false);
 		
 		String decimal = num.substring(num.indexOf(".")+1);
 		if (decimal.length() == 1) {
@@ -63,35 +72,39 @@ public class RomanNumeralCalculator {
 		if (a == 0) {
 			return result;
 		}
+		
 		int b = 100;
 		int gcm = gcm(a, b);
 		
-		if (!result.equals(""))
+		if (!result.equals("")) {
 			result = result.concat(" ");
-
-		return result.concat(InttoRoman(a/gcm, true) + 
-				"/" + InttoRoman(b/gcm, true));
+		}
+			
+		return result.concat(intToRoman(a/gcm, true) + 
+				"/" + intToRoman(b/gcm, true));
 	}
 	
 	// hashtable used to convert Roman to integer
-	static Hashtable<Character, Integer> ht = new Hashtable<Character, Integer>();
+	static Hasmappingable<Character, Integer> mapping = new Hasmappingable<Character, Integer>();
 	static {
-		ht.put('I',1);
-	    ht.put('X',10);
-	    ht.put('C',100);
-	    ht.put('M',1000);
-	    ht.put('V',5);
-	    ht.put('L',50);
-	    ht.put('D',500);
+		mapping.put('I',1);
+	    mapping.put('X',10);
+	    mapping.put('C',100);
+	    mapping.put('M',1000);
+	    mapping.put('V',5);
+	    mapping.put('L',50);
+	    mapping.put('D',500);
 	}
-	    
-	public static int RomantoInt(String num) {
-		// takes a simple Roman Numeral (with no fractions)
-		// regardless of lower/upper case and 
-		// turns it into a decimal number
-		
-		if (num.matches("nulla"))
+	
+	/**
+	 * Takes a simple Roman Numeral (with no fractions)
+	 * regardless of lower/upper case and 
+	 * turns it into a decimal number
+	 */
+	public static int romanToInt(String num) {	
+		if (num.matches("nulla")) {
 			return 0;
+		}
 		
 		num = num.toUpperCase();
 	    int intNum = 0;
@@ -102,29 +115,33 @@ public class RomanNumeralCalculator {
     		if (Character.toString(num.charAt(i)).matches("-")) {
     			return -intNum;
     		}
-            int temp = ht.get(num.charAt(i));
-            if (temp < prev)
+			
+            int temp = mapping.get(num.charAt(i));
+            if (temp < prev) {
                 intNum -= temp;
-            else
+            } else {
                 intNum += temp;
+			}
+			
             prev = temp;
 	    }
 	    return intNum;
 	}   
 
-	public static double RomanFractoDeci(String num) {
-		// takes a whole Roman Numeral including fractions
-		// and turns it into a decimal number
-		
+	/**
+	 * Takes a whole Roman Numeral including fractions
+	 * and turns it into a decimal number
+	 */
+	public static double romanFracToDeci(String num) {
 		// split Roman Numeral input into base number and/or
 		// numerator and denominator
 		String[] parts = num.split("[ /]");		
-		int result = RomantoInt(parts[0]);
+		int result = romanToInt(parts[0]);
 		double numer = 0;
 		double denom = 1;		
 		if (parts.length > 1) {
-			numer = RomantoInt(parts[parts.length-2]);
-			denom = RomantoInt(parts[parts.length-1]);
+			numer = romanToInt(parts[parts.length-2]);
+			denom = romanToInt(parts[parts.length-1]);
 			if (parts.length == 2){
 				result = 0;
 			}
@@ -132,28 +149,28 @@ public class RomanNumeralCalculator {
 		
 		double fraction = numer/denom;		
 
-		if (result < 0)
+		if (result < 0) {
 			return result - fraction;
+		}
 		return result + fraction;
 	}
-	
     
     public static String addRomanNumerals(String... args){
     	double result = 0;
     	for (int i = 0; i < args.length; ++i) {
-    		double r = RomanFractoDeci(args[i]);
+    		double r = romanFracToDeci(args[i]);
     		result += r; 
     	}
-    	return DecimaltoRoman(result);
+    	return decimalToRoman(result);
     }
 
     public static String subtractRomanNumerals(String initial, String... rest){
-    	double result = RomanFractoDeci(initial);
+    	double result = romanFracToDeci(initial);
     	for (int i = 0; i < rest.length; ++i) {
-    		double r = RomanFractoDeci(rest[i]);
+    		double r = romanFracToDeci(rest[i]);
     		result -= r; 
     	}
-    	return DecimaltoRoman(result);    
+    	return decimalToRoman(result);    
     }
 
     public static String multiplyRomanNumerals(String... args){
@@ -161,24 +178,23 @@ public class RomanNumeralCalculator {
     	if (args.length > 0) {
 	    	result = 1;
 	    	for (int i = 0; i < args.length; ++i) {
-	    		double r = RomanFractoDeci(args[i]);
+	    		double r = romanFracToDeci(args[i]);
 	    		result *= r;
 	    	}
     	}
-	    return DecimaltoRoman(result);
+	    return decimalToRoman(result);
     }
 
     public static String divideRomanNumerals(String numerator , String... denominators){
-    	double result = RomanFractoDeci(numerator);
+    	double result = romanFracToDeci(numerator);
     	for (int i = 0; i < denominators.length; ++i) {
-    		double r = RomanFractoDeci(denominators[i]);
+    		double r = romanFracToDeci(denominators[i]);
     		result /= r;
     	}
-    	return DecimaltoRoman(result);    
+    	return decimalToRoman(result);    
     }
     
     public static void main(String[] args) {    	
     	System.out.println("hello world");
     }
 }
-
